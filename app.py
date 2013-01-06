@@ -1,12 +1,13 @@
-import os
-from flask import Flask, render_template
-
+from flask import Flask
+from flask_peewee.db import Database
 
 app = Flask(__name__)
+app.config.from_object('config.Configuration')
+db = Database(app)
 
-@app.route('/')
-def home():
-    return render_template('home.html')
+import models
+
+models.create_tables(db)
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
