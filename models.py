@@ -63,7 +63,7 @@ class Note(db.Model):
     created_date = DateTimeField(default=datetime.datetime.now)
 
 def create_table(a_class):
-    print "Crando la tabla:", a_class.__name__
+    print "Creando la tabla:", a_class.__name__
     a_class.drop_table(True)
     a_class.create_table()
 

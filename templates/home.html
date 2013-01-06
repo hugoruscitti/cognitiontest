@@ -6,5 +6,16 @@
 
 
 {% block main %}
-<h1>Hola?</h1>
+
+<h1>Usuarios</h1>
+
+<ul>
+{% for user in users %}
+    <li>{{user}}
+{% endfor %}
+</ul>
+
+<p>
+<a href='/usuarios/new'>Crear usuario</a>
+
 {% endblock %}
