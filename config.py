@@ -19,6 +19,7 @@ if 'HEROKU_POSTGRESQL_TEAL_URL' in os.environ:
         'engine': 'peewee.PostgresqlDatabase',
         'name': url.path[1:],
         'password': url.password,
+        'user': url.username,
         'host': url.hostname,
         'port': url.port,
     }
