@@ -32,7 +32,7 @@ def aviso_pre_video():
 
 @app.route('/video')
 def ver_video():
-    return render_template('video.html', video_url="/static/videos/campeon.mp4")
+    return render_template('video.html', video_url="http://hugoruscitti.com.ar/campeon.mp4")
 
 @app.route('/cuestionario', methods=['GET', 'POST'])
 def ver_cuestionario():
