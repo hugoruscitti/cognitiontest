@@ -10,6 +10,7 @@ class Configuration(object):
     SECRET_KEY = 'shhhh'
 
 if 'HEROKU_POSTGRESQL_TEAL_URL' in os.environ:
+    print "Detectando base de datos HEROKU POSTGRE"
     import urlparse
 
     urlparse.uses_netloc.append('postgres')
@@ -21,3 +22,6 @@ if 'HEROKU_POSTGRESQL_TEAL_URL' in os.environ:
         'host': url.hostname,
         'port': url.port,
     }
+    Configuration.DATABASE = DATABASE
+else:
+    print "Usando base de datos sqlite"
