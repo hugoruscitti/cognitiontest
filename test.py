@@ -1,10 +1,7 @@
 #!/usr/bin/env python
 
-"""Tests for the Flask Heroku template."""
-
 import unittest
 from app import app
-
 
 class TestApp(unittest.TestCase):
 
