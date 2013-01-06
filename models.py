@@ -73,3 +73,8 @@ def create_tables():
     create_table(Relationship)
     create_table(Message)
     create_table(Note)
+
+def create_fixture():
+    user = User(username="Hugo", password="123", email="pepe@123.com")
+    user.save()
+    print "Creando usuario de prueba:", user
