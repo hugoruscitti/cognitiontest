@@ -20,26 +20,40 @@
 
 
 
-<h2>Detalle</h2>
+<h2>Detalle de Respuestas</h2>
 
-<table class='table-bordered'>
-  <tr>
-    <th>Edad</th>
-    <th>Sexo</th>
-    <th>Estado Civil</th>
-    <th>Respuesta</th>
-  </tr>
 
-{% for persona in personas %}
-  <tr>
-    <td>{{ persona.edad }}</td>
-    <td>{{ sexo(persona.sexo) }}</td>
-    <td>{{ estado_civil(persona.estado_civil)}}</td>
-    <td>{{ respuesta(persona.respuesta) }}</td>
-  </td>
-{% endfor %}
+<table class="table table-bordered table-striped">
+  <colgroup>
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Edad</th>
+      <th>Sexo</th>
+      <th>Estado Civil</th>
+      <th>Respuesta</th>
+      <th>Horario de la respuesta</th>
+      <th>Tiempo de respuesta</th>
+    </tr>
+  </thead>
+  <tbody>
 
+    {% for persona in personas %}
+    <tr>
+      <td>{{ persona.edad }}</td>
+      <td>{{ sexo(persona.sexo) }}</td>
+      <td>{{ estado_civil(persona.estado_civil)}}</td>
+      <td>{{ respuesta(persona.respuesta) }}</td>
+      <td>{{ persona.fecha_ingreso }}</td>
+      <td>« sin implementar »</td>
+    </td>
+    {% endfor %}
+
+  </tbody>
 </table>
+
+
+
 
 <p>
 <a href='/'>Regresar a la página principal</a>

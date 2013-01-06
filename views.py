@@ -60,4 +60,10 @@ def terminado():
 @app.route('/resultados')
 def resultados():
     personas = models.Persona.select()
-    return render_template('persona/resultados.html', personas=personas, values="[['Han seleccionado BAJO suelo', 30], ['Han seleccionado ALTO sueldo',70]]")
+    template = "[['Han seleccionado BAJO sueldo', %(cantidad_bajo)d], ['Han seleccionado ALTO sueldo', %(cantidad_alto)d]]"
+    values = {
+            'cantidad_alto': models.Persona.select().where(models.Persona.respuesta==1).count(),
+            'cantidad_bajo': models.Persona.select().where(models.Persona.respuesta==2).count(),
+    }
+
+    return render_template('persona/resultados.html', personas=personas, values=template%values)
