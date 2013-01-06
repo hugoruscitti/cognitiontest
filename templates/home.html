@@ -11,7 +11,7 @@
 
 <ul>
 {% for user in users %}
-    <li>{{user}}
+<li>{{user}} <a href='/usuarios/edit/{{user.id}}'>editar</a>
 {% endfor %}
 </ul>
 

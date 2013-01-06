@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+{% block js %}
+{% endblock %}
+
+
+{% block main %}
+
+<h1>Crear Usuario (con id={{usuario.id}})</h1>
+
+<form action='/usuarios/edit/{{usuario.id}}' method='post'>
+  <dl>
+    <dt>Nombre de usuario</dt>
+    <dd><input name='nombre' value='{{usuario.nombre}}'></dd>
+    <dd><input type='submit' value='Guardar actualizado'/></dd>
+</dl>
+</form>
+
+
+{% endblock %}

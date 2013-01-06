@@ -9,6 +9,13 @@
 
 <h1>Crear Usuario</h1>
 
-<a href='/'>« Regresar</a>
+<form action='/usuarios/new' method='post'>
+  <dl>
+    <dt>Nombre de usuario</dt>
+    <dd><input name='nombre'></dd>
+    <dd><input type='submit' value='Crear'/></dd>
+</dl>
+</form>
+
 
 {% endblock %}

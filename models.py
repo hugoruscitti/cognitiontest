@@ -8,15 +8,20 @@ from app import db
 
 
 class User(db.Model, BaseUser):
-    username = CharField()
-    password = CharField()
-    email = CharField()
-    join_date = DateTimeField(default=datetime.datetime.now)
+    nombre = CharField()
+    ingresado = DateTimeField(default=datetime.datetime.now)
+
+    def __unicode__(self):
+        return self.nombre
+
+class Relationship(db.Model):
+    from_user = ForeignKeyField(User, related_name='relationships')
+    to_user = ForeignKeyField(User, related_name='related_to')
     active = BooleanField(default=True)
     admin = BooleanField(default=False)
 
     def __unicode__(self):
-        return self.username
+        return 'Relationship from %s to %s' % (self.from_user, self.to_user)
 
     def following(self):
         return User.select().join(
@@ -39,12 +44,6 @@ class User(db.Model, BaseUser):
             (md5(self.email.strip().lower().encode('utf-8')).hexdigest(), size)
 
 
-class Relationship(db.Model):
-    from_user = ForeignKeyField(User, related_name='relationships')
-    to_user = ForeignKeyField(User, related_name='related_to')
-
-    def __unicode__(self):
-        return 'Relationship from %s to %s' % (self.from_user, self.to_user)
 
 
 class Message(db.Model):
@@ -67,7 +66,6 @@ def create_table(a_class):
     a_class.drop_table(True)
     a_class.create_table()
 
-
 def create_tables():
     create_table(User)
     create_table(Relationship)
@@ -75,6 +73,6 @@ def create_tables():
     create_table(Note)
 
 def create_fixture():
-    user = User(username="Hugo", password="123", email="pepe@123.com")
+    user = User(nombre="Hugo")
     user.save()
     print "Creando usuario de prueba:", user
