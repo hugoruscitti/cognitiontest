@@ -1,17 +1,16 @@
 {% extends "base.html" %}
 
-
 {% block js %}
 {% endblock %}
 
-
 {% block main %}
+<a href='/video'>ver video</a>
 
 <h1>Usuarios</h1>
 
 <ul>
 {% for user in users %}
-<li>{{user}} <a href='/usuarios/edit/{{user.id}}'>editar</a>
+    <li>{{user}} <a href='/usuarios/edit/{{user.id}}'>editar</a>
 {% endfor %}
 </ul>
 

@@ -17,12 +17,23 @@
 
   <link rel="stylesheet" href="/static/css/bootstrap.css">
   <link rel="stylesheet" href="/static/css/bootstrap-responsive.css">
-  <link rel="stylesheet/less" href="/static/css/main.less">
+  <link rel="stylesheet" href="/static/css/custom.css">
+
+  <link href="/static/video-js.css" rel="stylesheet">
+  <script src="/static/video.js"></script>
+
+  <script src="/static/js/jquery.js"></script>
+  <script src="/static/js/highcharts.js"></script>
+
+  <!-- Unless using the CDN hosted version, update the URL to the Flash SWF -->
+  <script>
+    _V_.options.flash.swf = "/static/video-js.swf";
+  </script>
+
+
+
   {% block css %}{% endblock %}
 
-  <!-- Rather use `less.js` to dynamically compile your `stylesheet/less` files? -->
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.1.5/less-1.1.5.min.js"></script>
-  <script>window.less || document.write('<script src="/static/js/less.js">\x3C/script>')</script>
 
   <!-- Need Modernizr? Uncomment the following script. -->
   <!-- <script src="/static/js/modernizr.js"></script> -->
@@ -35,7 +46,13 @@
     {% include "header.html" %}
   </header>
 
-  <div id="main" role="main">
+  <div class='container'>
+      {% for category, message in get_flashed_messages(with_categories=true) %}
+        <div class="alert  alert-{{ category }}">
+          <p>{{ message }}</p>
+        </div>
+      {% endfor %}
+
     {% block main %}{% endblock %}
   </div>
 
@@ -47,21 +64,10 @@
   <!-- JavaScript at the bottom for fast page loading -->
 
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="/static/js/libs/jquery.js">\x3C/script>')</script>
 
 
   <!-- Additional JavaScript libraries and plugins... -->
   {% block js %}{% endblock %}
-
-
-  <!-- mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID -->
-  <script>
-    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-    s.parentNode.insertBefore(g,s)}(document,'script'));
-  </script>
 
 
   <!-- Prompt IE < 8 users to install Chrome Frame.  -->

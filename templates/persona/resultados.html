@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+
+{% block js %}
+{% endblock %}
+
+
+{% block main %}
+
+<h1>Resultados registrados</h1>
+
+<p>Esta página muestra resultados del cuestionario.
+
+<p>
+<a class='btn btn-success' href='/exportar_csv'>Exportar datos CSV</a>
+
+<h2>Resumen</h2>
+
+{{ pie(values=values, title='Respuestas') | safe}}
+
+
+
+<h2>Detalle</h2>
+
+<table class='table-bordered'>
+  <tr>
+    <th>Edad</th>
+    <th>Sexo</th>
+    <th>Estado Civil</th>
+    <th>Respuesta</th>
+  </tr>
+
+{% for persona in personas %}
+  <tr>
+    <td>{{ persona.edad }}</td>
+    <td>{{ sexo(persona.sexo) }}</td>
+    <td>{{ estado_civil(persona.estado_civil)}}</td>
+    <td>{{ respuesta(persona.respuesta) }}</td>
+  </td>
+{% endfor %}
+
+</table>
+
+<p>
+<a href='/'>Regresar a la página principal</a>
+
+{% endblock %}

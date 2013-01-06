@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+
+{% block js %}
+{% endblock %}
+
+
+{% block main %}
+
+<form action='/' method='post'>
+  <dl>
+    <dt>Edad</dt><dd><input name='edad'></dd>
+    <dt>Sexo</dt>
+    <dd>
+      <select name='sexo'>
+        <option value></option>
+        <option value=1>Masculino</option>
+        <option value=2>Femenino</option>
+      </select>
+    </dd>
+
+    <dt>Estado Civil</dt>
+    <dd>
+      <select name='estado_civil'>
+        <option value></option>
+        <option value=1>Soltero/a</option>
+        <option value=2>Casado/a</option>
+      </select>
+    </dd>
+
+    <dd><input type='submit' value='Comenzar'/></dd>
+</dl>
+</form>
+
+
+{% endblock %}

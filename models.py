@@ -6,6 +6,15 @@ from peewee import *
 
 from app import db
 
+class Persona(db.Model, BaseUser):
+    edad = IntegerField()
+    sexo = IntegerField(choices=((0, ""), (1, 'Masculino'), (2, 'Femenino')), null=False)
+    estado_civil = IntegerField(choices=((0, ""), (1, 'Soltero/a'), (2, 'Casado/a')), null=False)
+    fecha_ingreso = DateTimeField(default=datetime.datetime.now)
+    respuesta = IntegerField(choices=((0, ""), (1, 'Alto sueldo, pero poca estabilidad laboral'), (2, 'Bajo sueldo, pero mayor estabilidad laboral'), (3, 'en curso...')), null=False)
+
+    def __unicode__(self):
+        return self.nombre
 
 class User(db.Model, BaseUser):
     nombre = CharField()
@@ -44,8 +53,6 @@ class Relationship(db.Model):
             (md5(self.email.strip().lower().encode('utf-8')).hexdigest(), size)
 
 
-
-
 class Message(db.Model):
     user = ForeignKeyField(User)
     content = TextField()
@@ -71,6 +78,7 @@ def create_tables():
     create_table(Relationship)
     create_table(Message)
     create_table(Note)
+    create_table(Persona)
 
 def create_fixture():
     user = User(nombre="Hugo")

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+
+{% block js %}
+{% endblock %}
+
+
+{% block main %}
+
+<video id="example_video_1" class="video-js vjs-default-skin" autoplay preload="auto" width="640" height="264"
+      poster="http://video-js.zencoder.com/oceans-clip.png"
+      data-setup="{}">
+      <source src="{{video_url}}" type='video/mp4' />
+    <track kind="captions" src="captions.vtt" srclang="en" label="English" />
+</video> 
+
+<p>
+<a href='/cuestionario'>Avanzar al cuestionario</a>
+
+<script>
+var myPlayer = _V_("example_video_1");
+myPlayer.addEvent("ended", function() {
+  document.getElementsByTagName('a')[0].click()
+});
+</script>
+
+{% endblock %}

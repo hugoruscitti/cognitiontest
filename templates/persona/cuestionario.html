@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block js %}
+{% endblock %}
+
+{% block main %}
+
+<p>
+Tiene la oportunidad de elegir entre dos opciones laborales:
+
+<p>
+¿Que elige usted ante esta posibilidad?
+
+<form action='/cuestionario' method='post'>
+  <dl>
+    <dt>Respuesta</dt>
+    <dd>
+        <select name='respuesta'>
+          <option value=''></option>
+          <option value='1'>Alto sueldo, pero poca estabilidad laboral</option>
+          <option value='2'>Bajo sueldo, pero mayor estabilidad laboral</option>
+        </select>
+    </dd>
+
+    <dd><input type='submit' value='Confirmar'/></dd>
+</dl>
+</form>
+
+
+{% endblock %}
